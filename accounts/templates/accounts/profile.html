@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load static %} {% block head_title %}Banking System{% endblock %} {% block content %} {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+    <p class="font-bold">Error!</p>
+    <p class="block sm:inline">{{ error }}</p>
+</div>
+{% endfor %} {% endif %} {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+    <p class="font-bold">Error!</p>
+    <p class="block sm:inline">{{ error }}</p>
+</div>
+{% endfor %} {% endif %}
+<div class="bg-white px-3 py-4 rounded-xl my-6">
+
+    <h4 class="font-bold text-3xl text-left pb-5">Account NO: {{request.user.account.account_no}}</h4>
+    
+    <button class="btn btn-primary bg-white text-decoration-none"> <a href="{% url 'update_profile'%}">Update Profile</a></button>
+    
+    <div class="d-flex flex-wrap justify-content-center px-5 pt-5">
+  {% for post in data %}
+  <div class="col-sm-3">
+    <div class="card m-2"> 
+      <div class="card-body">
+         <img src="{{post.image.url}}" class="card-img-top" alt="...">
+         <h5 class="card-title"><a href="{% url 'detail_book' post.book.id %}" class="text-decoration-none text-dark">{{post.name}}</a></h5>
+        <p class="card-text">{{post.price}}</p>
+        <p class="card-text">{{post.books_id}}</p>
+
+        <p class="card-text">{{post.brand}}</p>
+        <p class="card-text">{{post.author}}</p>
+        <a href="{% url 'review' post.book.id %}" class="btn btn-primary">review</a>
+        <!-- <a href="{% url 'book_back' post.book.id %}" class="btn btn-primary">return</a> -->
+        <!-- <p>Author : {{post.author.first_name}} {{post.author.last_name}}</p>
+        <p>
+          Category : {% for cat in post.category.all %}
+          <button class="btn btn-primary btn-sm m-2" disabled>
+            {{cat.name}} -->
+          <!-- </button>
+          {% endfor %}
+        </p> -->
+        
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+        
+</div>
+{% endblock %}
