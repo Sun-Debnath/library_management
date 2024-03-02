@@ -28,7 +28,6 @@
         <p class="card-text">{{post.brand}}</p>
         <p class="card-text">{{post.author}}</p>
         <a href="{% url 'review' post.book.id %}" class="btn btn-primary">review</a>
-        <!-- <a href="{% url 'book_back' post.book.id %}" class="btn btn-primary">return</a> -->
         <!-- <p>Author : {{post.author.first_name}} {{post.author.last_name}}</p>
         <p>
           Category : {% for cat in post.category.all %}
